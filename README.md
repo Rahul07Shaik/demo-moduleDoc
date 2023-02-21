@@ -7,7 +7,7 @@
 
 - [Challenges](#Challenges)
 - [Dependency conflicts](#Dependency-conflicts)
-- [Mitigation](#Mitigation)
+- [Minimisation](#Minimisation)
 - [Learning curve](#Learning-curve)
 - [File Structure](#File-Structure)
 - [Package Setup](#Package-Setup)
