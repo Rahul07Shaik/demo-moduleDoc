@@ -8,37 +8,29 @@
 - [Challenges](#Challenges)
 - [Dependency conflicts](#Dependency-conflicts)
 - [Minimisation](#Minimisation)
-- [Learning curve](#Learning-curve)
 - [File Structure](#File-Structure)
+- [Architecture Diagram](#Architecture-Diagram)
 - [Package Setup](#Package-Setup)
 
 
 ## Challenges
 
 There are few challenges we used to face in Module migration. 
-   - Swift packages are struggle to update the latest dependencies and version updating conflicts.
-   - May require updating or replacing existing version to work with a new swift packages.
-   - Changes to the file structure and build settings may be required, which can be time-consuming and disruptive.
-   - Xcode may not support all types of packages, which can require manual integration or workarounds.
-   - Smooth development workflow can be maintained with proper planning.
+   - Modules typically involve complex operations, often involving numerous callback functions that are integrated with container progressions.      As a result, they can be resource-intensive and require careful management to ensure optimal performance.
+   - May require updating or replacing dependency target versions to work with a new swift packages.
+   - Updating certain modules to their latest versions can cause internal errors in other modules that share the same dependencies.
+   - Xcode may not support all types of packages, which can require manual integrations 
         
 ## Dependency conflicts
 
-  Configuring new packages can be tricky, especially for projects with many customization needs. Conflicting version update during migration can   lead to errors or unexpected behavior that's hard to resolve if the new package's has different dependencies than the old one.
-    
+ Configuring new packages can present challenges, for projects with complex customization requirements. Version conflicts, dependencies           migration can result in errors.
+ 
 ## Minimisation 
 
-   - Before deploying the migration to production, test the changes in a staging environment to ensure that everything is working as expected.
-   - Review existing dependencies version changes in Git can help you keep track of changes and provide a way to roll back changes if                necessary.
-   - Communicate with other developers when migrating a package, inform them about the migration process, notify them of any necessary changes        they may need to make.
-   - Make sure that any dependencies used by the package are up to date and compatible with the new version of Swift.
-
-## Learning curve 
-
-  - Migrating to a new package dependency can be challenging for developers, requiring them to learn accurate module naming conventions of           dependency, and versions computability.
-  - To overcome these challenges, developers should carefully plan and test the migration process without errors.
-  - Steps that can be taken to ensure a smooth transition include resolving dependency conflicts, and unit-testing.
-
+   - Test the changes in a staging environment before deploying them to production to ensure proper functionality.
+   - Use Git to review changes in existing dependencies versions and to provide an avenue for rolling back changes, if needed.
+   - Ensure that all dependencies used by the package are up to date and compatible with the new Swift version.
+   
 ## File Structure
 ```
 Module
@@ -50,6 +42,9 @@ Module
     ├── A_<Module>Module.swift        # Root file container all the interface and callback initialization
     └── A_<Module>Interface.swift     # File consists of protocols that are needed for Module
 ```
+# Architecture Diagram
+
+![module-architecture](https://user-images.githubusercontent.com/11072850/209356532-bed36e86-1e21-47cd-812c-90fe1f1e72bb.png)
 
 ## Package Setup
 
