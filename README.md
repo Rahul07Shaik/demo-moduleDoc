@@ -10,6 +10,7 @@
 - [Minimisation](#Minimisation)
 - [File Structure](#File-Structure)
 - [Architecture Diagram](#Architecture-Diagram)
+- [Architecture Flow](#Architecture-Flow)
 - [Package Setup](#Package-Setup)
 
 
@@ -26,7 +27,7 @@ There are few challenges we used to face in Module migration.
  Configuring new packages can present challenges, for projects with complex customization requirements. Version conflicts, dependencies           migration can result in errors.
  
 ## Minimisation 
-
+  Here are few points to consider minimisations in module architecture
    - Test the changes in a staging environment before deploying them to production to ensure proper functionality.
    - Use Git to review changes in existing dependencies versions and to provide an avenue for rolling back changes, if needed.
    - Ensure that all dependencies used by the package are up to date and compatible with the new Swift version.
@@ -42,9 +43,30 @@ Module
     ├── A_<Module>Module.swift        # Root file container all the interface and callback initialization
     └── A_<Module>Interface.swift     # File consists of protocols that are needed for Module
 ```
-# Architecture Diagram
+## Architecture Diagram
 
 ![module-architecture](https://user-images.githubusercontent.com/11072850/209356532-bed36e86-1e21-47cd-812c-90fe1f1e72bb.png)
+
+## Architecture Flow
+
+  To summarize the module architecture flow, there are a few key points to consider.
+  
+   - Complex operations are frequently used in modules, including various callback methods that are coupled with container progressions.
+       - `ModuleCallbackInterface`: 
+         ```swift 
+            weak var callback: ContactModuleCallbackInterface?
+         ```
+   - Via the module, this internal procedure implicitly transmits to the container defined properties. Also, it makes it easier for modules to      communicate with containers.
+      - `init(config: )` : 
+         ``` swift
+          init(config: ContactModuleConfigInterface)
+         ```
+   - Together, the ModuleInterface and ModuleActionInterface manage connections between the many elements of the module architecture and deploy      module features, APIs, and views.
+      -  `ModuleActionInterface` & `ModuleInterface` :
+          ``` swift
+           protocol ContactModuleInterface: ContactModuleActionInterface
+          ```
+
 
 ## Package Setup
 
